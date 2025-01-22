@@ -104,7 +104,7 @@ public class TicTacToe {
     // methode pour verifier les chances de gagner
     public boolean isOver() {
         // verification lignes et colonnes
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < size; i++) {
             if ((board[i][0].getRepresentation().equals(player.getRepresentation()) && board[i][1].getRepresentation().equals(player.getRepresentation()) && board[i][2].getRepresentation().equals(player.getRepresentation()) ) ||
                     (board[0][i].getRepresentation().equals(player.getRepresentation()) && board[1][i].getRepresentation().equals(player.getRepresentation()) && board[2][i].getRepresentation().equals(player.getRepresentation()) )) {
                 System.out.println("Player " + player.getRepresentation() + " à gagné! It's over");
@@ -118,8 +118,8 @@ public class TicTacToe {
             return true;
         }
         // verification du tableau rempli: s'il y a des cases vides, return false donc le jeu continue
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 if (board[i][j].getRepresentation().equals("|   ")) {
                     return false;
                 }

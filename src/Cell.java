@@ -1,5 +1,5 @@
 public class Cell {
-    public String cell = "|   ";
+    protected String cell = "|   ";
 
     public String getRepresentation() {
         //return "|   ";

@@ -1,5 +1,5 @@
 public class Player {
-    String representation = "| X ";
+    protected String representation = "| X ";
 
     public String getRepresentation() {
 
