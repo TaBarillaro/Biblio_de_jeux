@@ -3,5 +3,6 @@ public class Main {
         //System.out.println("Welcome to TicTacToe!");
         TicTacToe ticTacToe = new TicTacToe();
         ticTacToe.play();
+
     }
 }

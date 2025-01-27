@@ -1,5 +1,6 @@
 
 public class TicTacToe {
+
     final int size = 3;
     Cell[][] board;
     Player currentPlayer;

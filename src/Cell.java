@@ -8,5 +8,6 @@ public class Cell {
 
     public void setCell(String cell) {
         this.cell = cell;
+
     }
 }

@@ -36,4 +36,5 @@ public class View {
     public void invalidChoice() {
         System.out.println("Invalid row or column number");
     }
+
 }

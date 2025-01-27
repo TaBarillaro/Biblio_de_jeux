@@ -32,4 +32,5 @@ public class HumanPlayer extends Player {
             makeMove(board);
         }
     }
+
 }

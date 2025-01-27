@@ -26,5 +26,4 @@ public class InteractionUtilisateur {
 //    public boolean exitGame() {
 //        return scanner.nextLine().equalsIgnoreCase("| X");
 //    }
-
 }

@@ -1,4 +1,5 @@
 public abstract class Player {
+
     protected String representation;
 
     public Player(String representation) {
