@@ -37,6 +37,5 @@ public class ArtificialPlayer extends Player {
 
             board[row][col].setCell(this.getRepresentation());
         }
-
     }
 }

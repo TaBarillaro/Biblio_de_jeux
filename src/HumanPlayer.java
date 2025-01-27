@@ -11,7 +11,6 @@ public class HumanPlayer extends Player {
 
     @Override
     public void makeMove(Cell[][] board) {
-
         //Scanner sc = new Scanner(System.in);
         int row, col;
         System.out.println("Enter the row number");
