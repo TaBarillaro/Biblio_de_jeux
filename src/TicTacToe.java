@@ -2,6 +2,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class TicTacToe {
+
     final int size = 3;
     Cell[][] board;
     Player currentPlayer;

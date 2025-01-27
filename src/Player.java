@@ -3,6 +3,7 @@ public abstract class Player {
 
     public Player(String representation) {
         this.representation = representation;
+
     }
 
     public String getRepresentation() {
