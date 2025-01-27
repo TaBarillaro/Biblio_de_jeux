@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class ArtificialPlayer extends Player {
 
-    private Random random;
+    private final Random random;
     //Random random = new Random();
 
     // constructeur
@@ -23,7 +23,7 @@ public class ArtificialPlayer extends Player {
             for (int j = 0; j < 3; j ++) {
                 // si la case est vide
                 if (board[i][j].getRepresentation().equals("|   ")) {
-                    // on l'ajout à la liste emptyCells
+                    // on l'ajoute à la liste emptyCells
                     emptyCells.add(new int[] {i, j});
                 }
             }
