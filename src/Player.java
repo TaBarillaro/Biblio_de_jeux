@@ -3,6 +3,7 @@ public abstract class Player {
     protected String representation;
 
     public Player(String representation) {
+
         this.representation = representation;
     }
 
@@ -12,6 +13,7 @@ public abstract class Player {
     }
 
     public void setRepresentation(String representation) {
+
         this.representation = representation;
     }
 

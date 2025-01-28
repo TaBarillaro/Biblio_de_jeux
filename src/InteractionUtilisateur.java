@@ -5,6 +5,7 @@ public class InteractionUtilisateur {
 
     // construct
     public InteractionUtilisateur() {
+
         this.scanner = new Scanner(System.in);
     }
 

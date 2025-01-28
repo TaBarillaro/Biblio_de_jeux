@@ -62,21 +62,71 @@ public class TicTacToe {
     // methode pour verifier les chances de gagner
     public boolean isOver() {
         // verification lignes et colonnes
+//        for (int i = 0; i < size; i++) {
+//            if ((board[i][0].getRepresentation().equals(currentPlayer.getRepresentation()) && board[i][1].getRepresentation().equals(currentPlayer.getRepresentation()) &&
+//                    board[i][2].getRepresentation().equals(currentPlayer.getRepresentation()) ) ||
+//                    (board[0][i].getRepresentation().equals(currentPlayer.getRepresentation()) &&
+//                            board[1][i].getRepresentation().equals(currentPlayer.getRepresentation()) && board[2][i].getRepresentation().equals(currentPlayer.getRepresentation()) )) {
+//                view.displayBoard(board);
+//                view.winner(currentPlayer);
+//                return true;
+//            }
+//        }
         for (int i = 0; i < size; i++) {
-            if ((board[i][0].getRepresentation().equals(currentPlayer.getRepresentation()) && board[i][1].getRepresentation().equals(currentPlayer.getRepresentation()) && board[i][2].getRepresentation().equals(currentPlayer.getRepresentation()) ) ||
-                    (board[0][i].getRepresentation().equals(currentPlayer.getRepresentation()) && board[1][i].getRepresentation().equals(currentPlayer.getRepresentation()) && board[2][i].getRepresentation().equals(currentPlayer.getRepresentation()) )) {
+            boolean lineok = true;
+            for (int j = 0; j < size; j++) {
+                lineok = lineok && board[i][j].getRepresentation().equals(currentPlayer.getRepresentation());
+            }
+            if (lineok) {
                 view.displayBoard(board);
                 view.winner(currentPlayer);
                 return true;
             }
         }
+
+        for (int j = 0; j < size; j++) {
+            boolean colonne = true;
+            for (int i = 0; i < size; i++) {
+                colonne = colonne && board[i][j].getRepresentation().equals(currentPlayer.getRepresentation());
+            }
+            if (colonne) {
+                view.displayBoard(board);
+                view.winner(currentPlayer);
+                return true;
+            }
+        }
+
         // verification des deux diagonales
-        if ((board[0][0].getRepresentation().equals(currentPlayer.getRepresentation()) && board[1][1].getRepresentation().equals(currentPlayer.getRepresentation()) && board[2][2].getRepresentation().equals(currentPlayer.getRepresentation()) ) ||
-                (board[0][2].getRepresentation().equals(currentPlayer.getRepresentation()) && board[1][1].getRepresentation().equals(currentPlayer.getRepresentation()) && board[2][0].getRepresentation().equals(currentPlayer.getRepresentation()) )) {
+//        if ((board[0][0].getRepresentation().equals(currentPlayer.getRepresentation()) && board[1][1].getRepresentation().equals(currentPlayer.getRepresentation()) &&
+//                board[2][2].getRepresentation().equals(currentPlayer.getRepresentation()) ) ||
+//                (board[0][2].getRepresentation().equals(currentPlayer.getRepresentation()) && board[1][1].getRepresentation().equals(currentPlayer.getRepresentation()) &&
+//                        board[2][0].getRepresentation().equals(currentPlayer.getRepresentation()) )) {
+//            view.displayBoard(board);
+//            view.winner(currentPlayer);
+//            return true;
+//        }
+        boolean diagok= true;
+        for (int i = 0; i < size; i++) {
+            diagok = diagok && board[i][i].getRepresentation().equals(currentPlayer.getRepresentation());
+        }
+        if (diagok) {
             view.displayBoard(board);
             view.winner(currentPlayer);
             return true;
         }
+
+        for (int i = 0; i < size; i++) {
+            boolean diagonal = true;
+            for (int j = 2; j < size; j--) {
+                diagonal = diagonal && board[i][j].getRepresentation().equals(currentPlayer.getRepresentation());
+            }
+            if (diagonal) {
+                view.displayBoard(board);
+                view.winner(currentPlayer);
+                return true;
+            }
+        }
+
         // verification du tableau rempli: s'il y a des cases vides, return false donc le jeu continue
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
