@@ -1,3 +1,7 @@
+package player;
+
+import games.Cell;
+
 public abstract class Player {
 
     protected String representation;

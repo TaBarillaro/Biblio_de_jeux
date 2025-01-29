@@ -1,3 +1,8 @@
+package view;
+
+import games.Cell;
+import player.Player;
+
 public class View {
 
     public void userChoice() {
@@ -24,7 +29,7 @@ public class View {
 
     // methode pour annoncer le gagnant
     public void winner(Player winner) {
-        System.out.println("Player " + winner.getRepresentation() + " à gagné! It's over");
+        System.out.println("player.Player " + winner.getRepresentation() + " à gagné! It's over");
     }
 
     // methode pour annoncer l'égalité

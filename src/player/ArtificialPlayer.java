@@ -1,3 +1,7 @@
+package player;
+
+import games.Cell;
+
 import java.util.ArrayList;
 import java.util.Random;
 

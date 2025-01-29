@@ -1,3 +1,9 @@
+package player;
+
+import games.Cell;
+import view.InteractionUtilisateur;
+import view.View;
+
 import java.util.Scanner;
 
 public class HumanPlayer extends Player {

@@ -1,3 +1,10 @@
+package games;
+
+import player.ArtificialPlayer;
+import player.HumanPlayer;
+import player.Player;
+import view.InteractionUtilisateur;
+import view.View;
 
 public class TicTacToe {
 
@@ -40,9 +47,6 @@ public class TicTacToe {
         //Scanner scanner = new Scanner(System.in);
 
         for (int k = 0; k < 9; k++) {
-            if (isOver()) {
-                break;
-            }
             // montre le tableau à chaque jeu
             //ticTacToe();
             view.displayBoard(board);
@@ -62,16 +66,6 @@ public class TicTacToe {
     // methode pour verifier les chances de gagner
     public boolean isOver() {
         // verification lignes et colonnes
-//        for (int i = 0; i < size; i++) {
-//            if ((board[i][0].getRepresentation().equals(currentPlayer.getRepresentation()) && board[i][1].getRepresentation().equals(currentPlayer.getRepresentation()) &&
-//                    board[i][2].getRepresentation().equals(currentPlayer.getRepresentation()) ) ||
-//                    (board[0][i].getRepresentation().equals(currentPlayer.getRepresentation()) &&
-//                            board[1][i].getRepresentation().equals(currentPlayer.getRepresentation()) && board[2][i].getRepresentation().equals(currentPlayer.getRepresentation()) )) {
-//                view.displayBoard(board);
-//                view.winner(currentPlayer);
-//                return true;
-//            }
-//        }
         for (int i = 0; i < size; i++) {
             boolean lineok = true;
             for (int j = 0; j < size; j++) {
@@ -97,14 +91,7 @@ public class TicTacToe {
         }
 
         // verification des deux diagonales
-//        if ((board[0][0].getRepresentation().equals(currentPlayer.getRepresentation()) && board[1][1].getRepresentation().equals(currentPlayer.getRepresentation()) &&
-//                board[2][2].getRepresentation().equals(currentPlayer.getRepresentation()) ) ||
-//                (board[0][2].getRepresentation().equals(currentPlayer.getRepresentation()) && board[1][1].getRepresentation().equals(currentPlayer.getRepresentation()) &&
-//                        board[2][0].getRepresentation().equals(currentPlayer.getRepresentation()) )) {
-//            view.displayBoard(board);
-//            view.winner(currentPlayer);
-//            return true;
-//        }
+
         boolean diagok= true;
         for (int i = 0; i < size; i++) {
             diagok = diagok && board[i][i].getRepresentation().equals(currentPlayer.getRepresentation());
@@ -117,7 +104,7 @@ public class TicTacToe {
 
         for (int i = 0; i < size; i++) {
             boolean diagonal = true;
-            for (int j = 2; j < size; j--) {
+            for (int j = size-1; j>=0; j--) {
                 diagonal = diagonal && board[i][j].getRepresentation().equals(currentPlayer.getRepresentation());
             }
             if (diagonal) {

@@ -1,3 +1,5 @@
+package games;
+
 public class Cell {
     protected String cell = "|   ";
 
