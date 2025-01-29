@@ -6,125 +6,127 @@ import player.Player;
 import view.InteractionUtilisateur;
 import view.View;
 
-public class TicTacToe {
+public class TicTacToe extends BoardGame {
 
-    final int size = 3;
-    Cell[][] board;
-    Player currentPlayer;
-    Player player1;
-    Player player2;
-    InteractionUtilisateur interactionUtilisateur;
-    View view;
+//    final int size = 3;
+//    private Cell[][] board;
+//    private Player currentPlayer;
+//    private Player player1;
+//    private Player player2;
+//    private InteractionUtilisateur interactionUtilisateur;
+//    private View view;
 
     // construct pour initializer board
     public TicTacToe() {
-        board = new Cell[size][size];
-        view = new View();
-        interactionUtilisateur = new InteractionUtilisateur();
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                board[i][j] = new Cell();
-            }
-        }
-        // choix de l'adversaire
-        view.userChoice();
-        String playerType = interactionUtilisateur.recoveryAnswer();
-
-        if (playerType.equals("human")) {
-            player1 = new HumanPlayer("| X ");  // human player
-            player2 = new HumanPlayer("| O ");  //  human player
-        } else if (playerType.equals("ai")) {
-            player2 = new ArtificialPlayer("| O "); // artificial player
-            player1 = new HumanPlayer("| X ");  // human player
-        }
-        currentPlayer = player1;
+        super(3);
+//        board = new Cell[size][size];
+//        view = new View();
+//        interactionUtilisateur = new InteractionUtilisateur();
+//
+//        for (int i = 0; i < size; i++) {
+//            for (int j = 0; j < size; j++) {
+//                board[i][j] = new Cell();
+//            }
+//        }
+        initPlayer();
     }
 
+    private void initPlayer() {
+        // choix de l'adversaire
+        getView().userChoice();
+        String playerType = getInteractionUtilisateur().recoveryAnswer();
+
+        if (playerType.equals("human")) {
+            setPlayer1(new HumanPlayer("| X "));  // human player
+            setPlayer2(new HumanPlayer("| O "));  //  human player
+        } else if (playerType.equals("ai")) {
+            setPlayer2(new ArtificialPlayer("| O ")); // artificial player
+            setPlayer1(new HumanPlayer("| X "));  // human player
+        }
+        setCurrentPlayer(getPlayer1());
+    }
 
     // methode pour alterner les joueurs
     public void play() {
-        //Scanner scanner = new Scanner(System.in);
 
         for (int k = 0; k < 9; k++) {
-            // montre le tableau à chaque jeu
-            //ticTacToe();
-            view.displayBoard(board);
+            // montre le tableau à chaque fois
+            getView().displayBoard(getBoard());
 
             // le joueur jeu
-            currentPlayer.makeMove(board);
+            getCurrentPlayer().makeMove(getBoard());
 
             if (isOver()) {
                 break;
             }
 
             // operation ternaire pour alterner les joueurs
-            currentPlayer = (currentPlayer == player1) ? player2 : player1;
+//            currentPlayer() = (getCurrentPlayer() == player1) ? player2 : player1;
+            setCurrentPlayer(getCurrentPlayer() == getPlayer1() ? getPlayer2() : getPlayer1());
         }
     }
 
     // methode pour verifier les chances de gagner
     public boolean isOver() {
         // verification lignes et colonnes
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < getSize(); i++) {
             boolean lineok = true;
-            for (int j = 0; j < size; j++) {
-                lineok = lineok && board[i][j].getRepresentation().equals(currentPlayer.getRepresentation());
+            for (int j = 0; j < getSize(); j++) {
+                lineok = lineok && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (lineok) {
-                view.displayBoard(board);
-                view.winner(currentPlayer);
+                getView().displayBoard(getBoard());
+                getView().winner(getCurrentPlayer());
                 return true;
             }
         }
 
-        for (int j = 0; j < size; j++) {
+        for (int j = 0; j < getSize(); j++) {
             boolean colonne = true;
-            for (int i = 0; i < size; i++) {
-                colonne = colonne && board[i][j].getRepresentation().equals(currentPlayer.getRepresentation());
+            for (int i = 0; i < getSize(); i++) {
+                colonne = colonne && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (colonne) {
-                view.displayBoard(board);
-                view.winner(currentPlayer);
+                getView().displayBoard(getBoard());
+                getView().winner(getCurrentPlayer());
                 return true;
             }
         }
 
         // verification des deux diagonales
-
         boolean diagok= true;
-        for (int i = 0; i < size; i++) {
-            diagok = diagok && board[i][i].getRepresentation().equals(currentPlayer.getRepresentation());
+        for (int i = 0; i < getSize(); i++) {
+            diagok = diagok && getBoard()[i][i].getRepresentation().equals(getCurrentPlayer().getRepresentation());
         }
         if (diagok) {
-            view.displayBoard(board);
-            view.winner(currentPlayer);
+            getView().displayBoard(getBoard());
+            getView().winner(getCurrentPlayer());
             return true;
         }
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < getSize(); i++) {
             boolean diagonal = true;
-            for (int j = size-1; j>=0; j--) {
-                diagonal = diagonal && board[i][j].getRepresentation().equals(currentPlayer.getRepresentation());
+            for (int j = getSize()-1; j>=0; j--) {
+                diagonal = diagonal && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (diagonal) {
-                view.displayBoard(board);
-                view.winner(currentPlayer);
+                getView().displayBoard(getBoard());
+                getView().winner(getCurrentPlayer());
                 return true;
             }
         }
 
         // verification du tableau rempli: s'il y a des cases vides, return false donc le jeu continue
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (board[i][j].getRepresentation().equals("|   ")) {
+        for (int i = 0; i < getSize(); i++) {
+            for (int j = 0; j < getSize(); j++) {
+                if (getBoard()[i][j].getRepresentation().equals("|   ")) {
                     return false;
                 }
             }
         }
-        view.displayBoard(board);
+        getView().displayBoard(getBoard());
         // si les cases sont toutes remplies et il n'y a pas un gagnant, print égalité et arrête le jeu
-        view.equality();
+        getView().equality();
 
         return true;
     }
