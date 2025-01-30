@@ -15,7 +15,7 @@ public class TicTacToe extends BoardGame {
 
     // construct pour initializer board
     public TicTacToe() {
-        super(3);
+        super(3, 3);
     }
 
     protected void initPlayer() {
@@ -41,7 +41,7 @@ public class TicTacToe extends BoardGame {
             getView().displayBoard(getBoard());
 
             // le joueur jeu
-            getCurrentPlayer().makeMove(getBoard(), getSize());
+            getCurrentPlayer().makeMove(getBoard(), getRows(), getCols());
 
             if (isOver()) {
                 break;
@@ -55,9 +55,9 @@ public class TicTacToe extends BoardGame {
     // methode pour verifier les chances de gagner
     public boolean isOver() {
         // verification lignes et colonnes
-        for (int i = 0; i < getSize(); i++) {
+        for (int i = 0; i < getRows(); i++) {
             boolean lineok = true;
-            for (int j = 0; j < getSize(); j++) {
+            for (int j = 0; j < getCols(); j++) {
                 lineok = lineok && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (lineok) {
@@ -67,9 +67,9 @@ public class TicTacToe extends BoardGame {
             }
         }
 
-        for (int j = 0; j < getSize(); j++) {
+        for (int j = 0; j < getCols(); j++) {
             boolean colonne = true;
-            for (int i = 0; i < getSize(); i++) {
+            for (int i = 0; i < getRows(); i++) {
                 colonne = colonne && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (colonne) {
@@ -81,7 +81,7 @@ public class TicTacToe extends BoardGame {
 
         // verification des deux diagonales
         boolean diagok= true;
-        for (int i = 0; i < getSize(); i++) {
+        for (int i = 0; i < getRows(); i++) {
             diagok = diagok && getBoard()[i][i].getRepresentation().equals(getCurrentPlayer().getRepresentation());
         }
         if (diagok) {
@@ -90,9 +90,9 @@ public class TicTacToe extends BoardGame {
             return true;
         }
 
-        for (int i = 0; i < getSize(); i++) {
+        for (int i = 0; i < getRows(); i++) {
             boolean diagonal = true;
-            for (int j = getSize()-1; j>=0; j--) {
+            for (int j = getCols()-1; j>=0; j--) {
                 diagonal = diagonal && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (diagonal) {
@@ -103,8 +103,8 @@ public class TicTacToe extends BoardGame {
         }
 
         // verification du tableau rempli: s'il y a des cases vides, return false donc le jeu continue
-        for (int i = 0; i < getSize(); i++) {
-            for (int j = 0; j < getSize(); j++) {
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getCols(); j++) {
                 if (getBoard()[i][j].getRepresentation().equals("|   ")) {
                     return false;
                 }

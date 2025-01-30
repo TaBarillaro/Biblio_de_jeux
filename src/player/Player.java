@@ -21,5 +21,7 @@ public abstract class Player {
         this.representation = representation;
     }
 
-    public abstract void makeMove(Cell[][] board, int size);
+    public abstract void makeMove(Cell[][] board, int rows, int cols);
+
+    public abstract void makeMovePuiss4(Cell[][] board, int cols);
 }

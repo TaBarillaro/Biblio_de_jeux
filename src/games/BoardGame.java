@@ -7,6 +7,14 @@ import view.View;
 public abstract class BoardGame {
 
     // attributs avec leurs getters and setters
+    private Cell[][] board;
+    private Player currentPlayer;
+    private Player player1;
+    private Player player2;
+    private InteractionUtilisateur interactionUtilisateur;
+    private View view;
+    //private int size;
+
     public Cell[][] getBoard() {
         return board;
     }
@@ -15,7 +23,6 @@ public abstract class BoardGame {
         this.board = board;
     }
 
-    private Cell[][] board;
 
     public Player getCurrentPlayer() {
         return currentPlayer;
@@ -25,7 +32,6 @@ public abstract class BoardGame {
         this.currentPlayer = currentPlayer;
     }
 
-    private Player currentPlayer;
 
     public Player getPlayer1() {
         return player1;
@@ -35,7 +41,6 @@ public abstract class BoardGame {
         this.player1 = player1;
     }
 
-    private Player player1;
 
     public Player getPlayer2() {
         return player2;
@@ -45,7 +50,6 @@ public abstract class BoardGame {
         this.player2 = player2;
     }
 
-    private Player player2;
 
     public InteractionUtilisateur getInteractionUtilisateur() {
         return interactionUtilisateur;
@@ -55,7 +59,6 @@ public abstract class BoardGame {
         this.interactionUtilisateur = interactionUtilisateur;
     }
 
-    private InteractionUtilisateur interactionUtilisateur;
 
     public View getView() {
         return view;
@@ -65,22 +68,29 @@ public abstract class BoardGame {
         this.view = view;
     }
 
-    private View view;
 
-    public int getSize() {
-        return size;
+//    public int getSize() {
+//        return size;
+//    }
+
+    // methode pour obtenir le nombre des lignes
+    public int getRows() {
+        return board.length;
     }
 
-    private int size;
+    // methode pour obtenir le nombre des colonnes
+    public int getCols() {
+        return board[0].length;
+    }
 
-    protected BoardGame(int size) {
-        this.size = size;
-        board = new Cell[size][size];
+    protected BoardGame(int rows, int cols) {
+        //this.size = size;
+        board = new Cell[rows][cols];
         view = new View();
         interactionUtilisateur = new InteractionUtilisateur();
 
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 board[i][j] = new Cell();
             }
         }
