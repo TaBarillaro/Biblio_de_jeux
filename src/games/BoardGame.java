@@ -92,6 +92,7 @@ public abstract class BoardGame {
     // methode isOver commun à tous les jeux
     public abstract boolean isOver();
 
-
+    // methode initPlayer pour choisir l'adversaire
+    protected abstract void initPlayer();
 
 }

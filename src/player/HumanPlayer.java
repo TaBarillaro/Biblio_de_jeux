@@ -20,7 +20,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void makeMove(Cell[][] board) {
+    public void makeMove(Cell[][] board, int size) {
         int row, col;
         view.choiceCell();
         int[] coordinates = interactionUtilisateur.recoveryAnswerInt();
@@ -28,14 +28,14 @@ public class HumanPlayer extends Player {
         col = coordinates[1];
 
         // si la celle est valide et libre
-        if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col].getRepresentation().equals("|   ")) {
+        if (row >= 0 && row < size && col >= 0 && col < size && board[row][col].getRepresentation().equals("|   ")) {
             // je remplace la celle vide par la representation du joueur
             board[row][col].setCell(this.getRepresentation());
             // sinon
         } else {
             // l'action n'est pas valide, essaye à nouveau
             view.invalidChoice();
-            makeMove(board);
+            makeMove(board, size);
         }
     }
 

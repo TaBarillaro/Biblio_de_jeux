@@ -17,14 +17,14 @@ public class ArtificialPlayer extends Player {
     }
 
     @Override
-    public void makeMove(Cell[][] board) {
+    public void makeMove(Cell[][] board, int size) {
 
         // création d'une liste
         ArrayList<Object> emptyCells = new ArrayList<>();
 
         // trouve les cases vides
-        for (int i = 0; i < 3; i ++) {
-            for (int j = 0; j < 3; j ++) {
+        for (int i = 0; i < size; i ++) {
+            for (int j = 0; j < size; j ++) {
                 // si la case est vide
                 if (board[i][j].getRepresentation().equals("|   ")) {
                     // on l'ajoute à la liste emptyCells

@@ -21,5 +21,5 @@ public abstract class Player {
         this.representation = representation;
     }
 
-    public abstract void makeMove(Cell[][] board);
+    public abstract void makeMove(Cell[][] board, int size);
 }

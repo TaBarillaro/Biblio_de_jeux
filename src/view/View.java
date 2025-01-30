@@ -12,13 +12,18 @@ public class View {
 
     // methode pour montrer le tableau
     public void displayBoard(Cell[][] board) {
-        System.out.println("-------------");
+        // longeur ligne horizontale
+        int rowLength = board.length;
+        String horizontalLine = "----".repeat(rowLength);
+        System.out.println(horizontalLine);
+        //System.out.println("-------------");
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j].getRepresentation());
             }
             System.out.println("|");
-            System.out.println("-------------");
+            //System.out.println("-------------");
+            System.out.println(horizontalLine);
         }
     }
 

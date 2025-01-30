@@ -2,9 +2,6 @@ package games;
 
 import player.ArtificialPlayer;
 import player.HumanPlayer;
-import player.Player;
-import view.InteractionUtilisateur;
-import view.View;
 
 public class TicTacToe extends BoardGame {
 
@@ -19,19 +16,9 @@ public class TicTacToe extends BoardGame {
     // construct pour initializer board
     public TicTacToe() {
         super(3);
-//        board = new Cell[size][size];
-//        view = new View();
-//        interactionUtilisateur = new InteractionUtilisateur();
-//
-//        for (int i = 0; i < size; i++) {
-//            for (int j = 0; j < size; j++) {
-//                board[i][j] = new Cell();
-//            }
-//        }
-        initPlayer();
     }
 
-    private void initPlayer() {
+    protected void initPlayer() {
         // choix de l'adversaire
         getView().userChoice();
         String playerType = getInteractionUtilisateur().recoveryAnswer();
@@ -48,20 +35,19 @@ public class TicTacToe extends BoardGame {
 
     // methode pour alterner les joueurs
     public void play() {
-
+        initPlayer();
         for (int k = 0; k < 9; k++) {
             // montre le tableau à chaque fois
             getView().displayBoard(getBoard());
 
             // le joueur jeu
-            getCurrentPlayer().makeMove(getBoard());
+            getCurrentPlayer().makeMove(getBoard(), getSize());
 
             if (isOver()) {
                 break;
             }
 
             // operation ternaire pour alterner les joueurs
-//            currentPlayer() = (getCurrentPlayer() == player1) ? player2 : player1;
             setCurrentPlayer(getCurrentPlayer() == getPlayer1() ? getPlayer2() : getPlayer1());
         }
     }
