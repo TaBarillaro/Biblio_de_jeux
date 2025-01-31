@@ -1,7 +1,6 @@
 package view;
 
-import games.Cell;
-import player.Player;
+//import player.Player;
 
 public class View {
 
@@ -16,13 +15,11 @@ public class View {
         int rowLength = board.length;
         String horizontalLine = "----".repeat(rowLength);
         System.out.println(horizontalLine);
-        //System.out.println("-------------");
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j].getRepresentation());
             }
             System.out.println("|");
-            //System.out.println("-------------");
             System.out.println(horizontalLine);
         }
     }
@@ -33,8 +30,8 @@ public class View {
     }
 
     // methode pour annoncer le gagnant
-    public void winner(Player winner) {
-        System.out.println("player.Player " + winner.getRepresentation() + " à gagné! It's over");
+    public void winner(String winner) {
+        System.out.println("player: Player " + winner + " à gagné! It's over");
     }
 
     // methode pour annoncer l'égalité

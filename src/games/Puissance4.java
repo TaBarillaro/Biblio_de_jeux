@@ -70,25 +70,25 @@ public class Puissance4 extends BoardGame{
                 // Vérifie si l’élément (i,j) est la tête d’une séquence de 4 pions horizontaux
                 if (j <= getCols() - 4 && checkConsecutive(i, j, 1, 0)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 4 pions verticales
                 if (i <= getRows() - 4 && checkConsecutive(i, j, 0, 1)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 4 pions en diagonales
                 if (i <= getRows() - 4 && checkConsecutive(i, j, 1, 1)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 4 pions en diagonales inversée
                 if (i <= getRows() - 4 && checkConsecutive(i, j, 1, -1)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
             }

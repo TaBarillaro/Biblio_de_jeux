@@ -1,6 +1,7 @@
 package games;
 
 import player.Player;
+import view.Cell;
 import view.InteractionUtilisateur;
 import view.View;
 
@@ -19,9 +20,9 @@ public abstract class BoardGame {
         return board;
     }
 
-    public void setBoard(Cell[][] board) {
-        this.board = board;
-    }
+//    public void setBoard(Cell[][] board) {
+//        this.board = board;
+//    }
 
 
     public Player getCurrentPlayer() {
@@ -55,9 +56,9 @@ public abstract class BoardGame {
         return interactionUtilisateur;
     }
 
-    public void setInteractionUtilisateur(InteractionUtilisateur interactionUtilisateur) {
-        this.interactionUtilisateur = interactionUtilisateur;
-    }
+//    public void setInteractionUtilisateur(InteractionUtilisateur interactionUtilisateur) {
+//        this.interactionUtilisateur = interactionUtilisateur;
+//    }
 
 
     public View getView() {
@@ -67,7 +68,6 @@ public abstract class BoardGame {
     public void setView(View view) {
         this.view = view;
     }
-
 
 //    public int getSize() {
 //        return size;

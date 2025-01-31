@@ -65,25 +65,25 @@ public class Gomoku extends BoardGame{
                 // Vérifie si l’élément (i,j) est la tête d’une séquence de 5 pions horizontaux
                 if (j <= getCols() - 5 && checkConsecutive(i, j, 1, 0)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 5 pions verticales
                 if (i <= getRows() - 5 && checkConsecutive(i, j, 0, 1)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 5 pions en diagonales
                 if (i <= getRows() - 5 && checkConsecutive(i, j, 1, 1)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 5 pions en diagonales inversée
                 if (i <= getRows() - 5 && checkConsecutive(i, j, 1, -1)) {
                     getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer());
+                    getView().winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
             }

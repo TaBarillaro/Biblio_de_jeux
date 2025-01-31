@@ -62,7 +62,7 @@ public class TicTacToe extends BoardGame {
             }
             if (lineok) {
                 getView().displayBoard(getBoard());
-                getView().winner(getCurrentPlayer());
+                getView().winner(getCurrentPlayer().getRepresentation());
                 return true;
             }
         }
@@ -74,7 +74,7 @@ public class TicTacToe extends BoardGame {
             }
             if (colonne) {
                 getView().displayBoard(getBoard());
-                getView().winner(getCurrentPlayer());
+                getView().winner(getCurrentPlayer().getRepresentation());
                 return true;
             }
         }
@@ -86,7 +86,7 @@ public class TicTacToe extends BoardGame {
         }
         if (diagok) {
             getView().displayBoard(getBoard());
-            getView().winner(getCurrentPlayer());
+            getView().winner(getCurrentPlayer().getRepresentation());
             return true;
         }
 
@@ -97,7 +97,7 @@ public class TicTacToe extends BoardGame {
             }
             if (diagonal) {
                 getView().displayBoard(getBoard());
-                getView().winner(getCurrentPlayer());
+                getView().winner(getCurrentPlayer().getRepresentation());
                 return true;
             }
         }

@@ -1,6 +1,6 @@
 package player;
 
-import games.Cell;
+import view.Cell;
 import view.InteractionUtilisateur;
 import view.View;
 

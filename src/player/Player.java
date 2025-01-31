@@ -1,6 +1,6 @@
 package player;
 
-import games.Cell;
+import view.Cell;
 
 public abstract class Player {
 
@@ -14,11 +14,6 @@ public abstract class Player {
     public String getRepresentation() {
 
         return representation;
-    }
-
-    public void setRepresentation(String representation) {
-
-        this.representation = representation;
     }
 
     public abstract void makeMove(Cell[][] board, int rows, int cols);
