@@ -2,17 +2,20 @@ package games;
 
 import player.ArtificialPlayer;
 import player.HumanPlayer;
+import view.View;
 
 public class Gomoku extends BoardGame{
 
+    private View view;
     // construct pour initialiser le board
-    public Gomoku() {
+    public Gomoku(View view) {
         super(15, 15);
+        this.view = view;
     }
 
     @Override
-    protected void initPlayer() {
-        getView().userChoice();
+    public void initPlayer() {
+        view.userChoice();
         String playerType = getInteractionUtilisateur().recoveryAnswer();
 
         if(playerType.equals("human")){
@@ -30,7 +33,7 @@ public class Gomoku extends BoardGame{
         initPlayer();
         for (int i = 0; i < 225; i++) {
             // montre le tableau à chaque fois
-            getView().displayBoard(getBoard());
+            view.displayBoard(getBoard());
 
             // le joueur jeu
             getCurrentPlayer().makeMove(getBoard(), getRows(), getCols());
@@ -64,26 +67,26 @@ public class Gomoku extends BoardGame{
             for (int j = 0; j < getCols(); j++) {
                 // Vérifie si l’élément (i,j) est la tête d’une séquence de 5 pions horizontaux
                 if (j <= getCols() - 5 && checkConsecutive(i, j, 1, 0)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 5 pions verticales
                 if (i <= getRows() - 5 && checkConsecutive(i, j, 0, 1)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 5 pions en diagonales
                 if (i <= getRows() - 5 && checkConsecutive(i, j, 1, 1)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 5 pions en diagonales inversée
                 if (i <= getRows() - 5 && checkConsecutive(i, j, 1, -1)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
             }
@@ -98,9 +101,9 @@ public class Gomoku extends BoardGame{
             }
         }
 
-        getView().displayBoard(getBoard());
+//        getView().displayBoard(getBoard());
         // si les cases sont toutes remplies et il n'y a pas un gagnant, print égalité et arrête le jeu
-        getView().equality();
+        view.equality();
         return true;
     }
 }

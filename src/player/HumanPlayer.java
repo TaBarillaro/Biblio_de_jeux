@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class HumanPlayer extends Player {
 
     private final Scanner scanner;
-    View view;
-    InteractionUtilisateur interactionUtilisateur;
+    protected View view;
+    protected InteractionUtilisateur interactionUtilisateur;
 
     public HumanPlayer(String representation) {
         super(representation);

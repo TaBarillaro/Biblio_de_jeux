@@ -38,7 +38,7 @@ public abstract class BoardGame {
         return player1;
     }
 
-    public void setPlayer1(Player player1) {
+    protected void setPlayer1(Player player1) {
         this.player1 = player1;
     }
 
@@ -47,12 +47,12 @@ public abstract class BoardGame {
         return player2;
     }
 
-    public void setPlayer2(Player player2) {
+    protected void setPlayer2(Player player2) {
         this.player2 = player2;
     }
 
 
-    public InteractionUtilisateur getInteractionUtilisateur() {
+    protected InteractionUtilisateur getInteractionUtilisateur() {
         return interactionUtilisateur;
     }
 
@@ -61,13 +61,13 @@ public abstract class BoardGame {
 //    }
 
 
-    public View getView() {
+    protected View getView() {
         return view;
     }
 
-    public void setView(View view) {
-        this.view = view;
-    }
+//    protected void setView(View view) {
+//        this.view = view;
+//    }
 
 //    public int getSize() {
 //        return size;
@@ -86,7 +86,7 @@ public abstract class BoardGame {
     protected BoardGame(int rows, int cols) {
         //this.size = size;
         board = new Cell[rows][cols];
-        view = new View();
+//        view = new View();
         interactionUtilisateur = new InteractionUtilisateur();
 
         for (int i = 0; i < rows; i++) {
@@ -97,12 +97,12 @@ public abstract class BoardGame {
     }
 
     // methode play commun à tous les jeux
-    public abstract void play();
+    protected abstract void play();
 
     // methode isOver commun à tous les jeux
     public abstract boolean isOver();
 
     // methode initPlayer pour choisir l'adversaire
-    protected abstract void initPlayer();
+    public abstract void initPlayer();
 
 }

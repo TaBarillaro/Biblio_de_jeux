@@ -2,17 +2,20 @@ package games;
 
 import player.ArtificialPlayer;
 import player.HumanPlayer;
+import view.View;
 
 public class Puissance4 extends BoardGame{
 
+    private View view;
     // construct pour initialiser le board
-    public Puissance4() {
+    public Puissance4(View view) {
         super(6, 7);
+        this.view = view;
     }
 
     @Override
-    protected void initPlayer() {
-        getView().userChoice();
+    public void initPlayer() {
+        view.userChoice();
         String playerType = getInteractionUtilisateur().recoveryAnswer();
 
         if(playerType.equals("human")) {
@@ -30,7 +33,7 @@ public class Puissance4 extends BoardGame{
         initPlayer();
         for (int i = 0; i < 42; i++) {
             // montre le tableau à chaque fois
-            getView().displayBoard(getBoard());
+            view.displayBoard(getBoard());
 
             // le joueur jeu
             getCurrentPlayer().makeMovePuiss4(getBoard(), getCols());
@@ -69,26 +72,26 @@ public class Puissance4 extends BoardGame{
             for (int j = 0; j < getCols(); j++) {
                 // Vérifie si l’élément (i,j) est la tête d’une séquence de 4 pions horizontaux
                 if (j <= getCols() - 4 && checkConsecutive(i, j, 1, 0)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 4 pions verticales
                 if (i <= getRows() - 4 && checkConsecutive(i, j, 0, 1)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 4 pions en diagonales
                 if (i <= getRows() - 4 && checkConsecutive(i, j, 1, 1)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
                 // Vérifie si l'élément (i,j) est la tete d'une sequence de 4 pions en diagonales inversée
                 if (i <= getRows() - 4 && checkConsecutive(i, j, 1, -1)) {
-                    getView().displayBoard(getBoard());
-                    getView().winner(getCurrentPlayer().getRepresentation());
+//                    getView().displayBoard(getBoard());
+                    view.winner(getCurrentPlayer().getRepresentation());
                     return true;
                 }
             }
@@ -102,9 +105,9 @@ public class Puissance4 extends BoardGame{
             }
         }
 
-        getView().displayBoard(getBoard());
+//        getView().displayBoard(getBoard());
         // si les cases sont toutes remplies et il n'y a pas un gagnant, print égalité et arrête le jeu
-        getView().equality();
+        view.equality();
         return true;
     }
 }

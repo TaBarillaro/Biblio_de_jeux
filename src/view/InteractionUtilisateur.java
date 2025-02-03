@@ -3,7 +3,7 @@ package view;
 import java.util.Scanner;
 
 public class InteractionUtilisateur {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     // construct
     public InteractionUtilisateur() {

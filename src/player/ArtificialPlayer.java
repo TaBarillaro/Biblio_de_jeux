@@ -8,7 +8,6 @@ import java.util.Random;
 public class ArtificialPlayer extends Player {
 
     private final Random random;
-    //Random random = new Random();
 
     // constructeur
     public ArtificialPlayer(String representation) {

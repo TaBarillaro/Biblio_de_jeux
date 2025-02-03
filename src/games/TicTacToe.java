@@ -2,6 +2,7 @@ package games;
 
 import player.ArtificialPlayer;
 import player.HumanPlayer;
+import view.View;
 
 public class TicTacToe extends BoardGame {
 
@@ -11,16 +12,17 @@ public class TicTacToe extends BoardGame {
 //    private Player player1;
 //    private Player player2;
 //    private InteractionUtilisateur interactionUtilisateur;
-//    private View view;
+    private View view;
 
     // construct pour initializer board
-    public TicTacToe() {
+    public TicTacToe(View view) {
         super(3, 3);
+        this.view = view;
     }
 
-    protected void initPlayer() {
+    public void initPlayer() {
         // choix de l'adversaire
-        getView().userChoice();
+        view.userChoice();
         String playerType = getInteractionUtilisateur().recoveryAnswer();
 
         if (playerType.equals("human")) {
@@ -38,7 +40,7 @@ public class TicTacToe extends BoardGame {
         initPlayer();
         for (int k = 0; k < 9; k++) {
             // montre le tableau à chaque fois
-            getView().displayBoard(getBoard());
+            view.displayBoard(getBoard());
 
             // le joueur jeu
             getCurrentPlayer().makeMove(getBoard(), getRows(), getCols());
@@ -61,8 +63,8 @@ public class TicTacToe extends BoardGame {
                 lineok = lineok && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (lineok) {
-                getView().displayBoard(getBoard());
-                getView().winner(getCurrentPlayer().getRepresentation());
+                view.displayBoard(getBoard());
+                view.winner(getCurrentPlayer().getRepresentation());
                 return true;
             }
         }
@@ -73,8 +75,8 @@ public class TicTacToe extends BoardGame {
                 colonne = colonne && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (colonne) {
-                getView().displayBoard(getBoard());
-                getView().winner(getCurrentPlayer().getRepresentation());
+//                getView().displayBoard(getBoard());
+                view.winner(getCurrentPlayer().getRepresentation());
                 return true;
             }
         }
@@ -85,8 +87,8 @@ public class TicTacToe extends BoardGame {
             diagok = diagok && getBoard()[i][i].getRepresentation().equals(getCurrentPlayer().getRepresentation());
         }
         if (diagok) {
-            getView().displayBoard(getBoard());
-            getView().winner(getCurrentPlayer().getRepresentation());
+//            getView().displayBoard(getBoard());
+            view.winner(getCurrentPlayer().getRepresentation());
             return true;
         }
 
@@ -96,8 +98,8 @@ public class TicTacToe extends BoardGame {
                 diagonal = diagonal && getBoard()[i][j].getRepresentation().equals(getCurrentPlayer().getRepresentation());
             }
             if (diagonal) {
-                getView().displayBoard(getBoard());
-                getView().winner(getCurrentPlayer().getRepresentation());
+//                getView().displayBoard(getBoard());
+                view.winner(getCurrentPlayer().getRepresentation());
                 return true;
             }
         }
@@ -110,9 +112,9 @@ public class TicTacToe extends BoardGame {
                 }
             }
         }
-        getView().displayBoard(getBoard());
+//        getView().displayBoard(getBoard());
         // si les cases sont toutes remplies et il n'y a pas un gagnant, print égalité et arrête le jeu
-        getView().equality();
+        view.equality();
 
         return true;
     }

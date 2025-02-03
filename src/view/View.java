@@ -2,6 +2,8 @@ package view;
 
 //import player.Player;
 
+import java.util.Scanner;
+
 public class View {
 
     public void userChoice() {
@@ -22,6 +24,31 @@ public class View {
             System.out.println("|");
             System.out.println(horizontalLine);
         }
+    }
+
+    public void chooseGameType() {
+        System.out.println("Quel jeu veux-tu jouer? (TicTacToe, Gomoku ou Puissance4): ");
+    }
+
+    public String getUserChoice() {
+        Scanner scanner = new Scanner(System.in);
+        String userChoice = "";
+        boolean validUserChoice = false;
+
+        while (!validUserChoice) {
+//            System.out.println("Quel jeu veux-tu jouer? (TicTacToe, Gomoku ou Puissance4): ");
+
+            userChoice = scanner.nextLine().trim();
+            if (userChoice.equalsIgnoreCase("TicTacToe") ||
+                    userChoice.equalsIgnoreCase("Puissance4") ||
+                    userChoice.equalsIgnoreCase("Gomoku")) {
+                validUserChoice = true;  // Se l'input è valido, esci dal ciclo
+            } else {
+                System.out.println("Input invalid!");
+            }
+        }
+
+        return userChoice;
     }
 
     // methode pour demander le mouvement
